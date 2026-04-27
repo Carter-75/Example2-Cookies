@@ -29,7 +29,7 @@ const app = express();
 // --- Configuration ---
 const isProd = process.env.PRODUCTION === 'true' || process.env.VERCEL === '1';
 const prodUrl = process.env.PROD_FRONTEND_URL;
-const PROJECT_NAME = process.env.PROJECT_NAME || 'Example2-Cookies';
+const PROJECT_NAME = process.env.PROJECT_NAME || 'example2-cookies';
 
 // Trust proxy
 if (isProd) {
