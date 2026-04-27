@@ -134,6 +134,7 @@ app.use(cookieParser());
 
 // Mount Routes
 app.use('/api/cookies', cookiesRouter);
+app.use('/cookies', cookiesRouter);
 
 app.get('/', (req, res) => {
   res.send(`API for ${PROJECT_NAME} is running`);
