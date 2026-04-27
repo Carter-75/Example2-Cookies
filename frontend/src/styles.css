@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --rustic-beige: #F5F5DC;
+  --rustic-brown: #8B4513;
+  --rustic-cream: #FFFDD0;
+  --rustic-green: #556B2F;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: var(--rustic-beige);
+  color: #3e2723;
+  background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+}
+
+h1, h2, h3, .serif {
+  font-family: 'Playfair Display', serif;
+}
+
+.rustic-card {
+  @apply bg-[#FFFDD0] border border-[#DEB887] rounded-lg overflow-hidden transition-all duration-500 shadow-sm;
+}
+
+.rustic-card:hover {
+  @apply shadow-2xl;
+  transform: translateY(-8px);
+  border-color: var(--rustic-brown);
+}
+
+.btn-rustic {
+  @apply px-8 py-3 bg-[#8B4513] text-white font-serif italic rounded-sm transition-all hover:bg-[#5d2e0d] active:scale-95;
+}
+
+.text-rustic {
+  color: var(--rustic-brown);
+}
+
+/* Texture overlays */
+.texture-overlay {
+  position: relative;
+}
+
+.texture-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+  opacity: 0.1;
+  pointer-events: none;
+}

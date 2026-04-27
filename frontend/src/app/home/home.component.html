@@ -1,0 +1,71 @@
+<div class="min-h-screen relative texture-overlay">
+  <!-- Physics Layer -->
+  <div #scene class="absolute inset-0 z-0 pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 py-20">
+    <!-- Hero Section -->
+    <header class="text-center mb-24">
+      <span class="text-rustic italic text-lg mb-4 block">Est. 2024 &mdash; Handcrafted Daily</span>
+      <h1 class="text-7xl font-bold text-[#3e2723] mb-8">The Rustic Batch</h1>
+      <div class="w-24 h-1 bg-[#8B4513] mx-auto mb-8"></div>
+      <p class="max-w-2xl mx-auto text-xl text-gray-700 leading-relaxed font-light">
+        Small-batch cookies made with stone-ground flour, organic butter, and a whole lot of heart. 
+        Delivered fresh from our hearth to your home.
+      </p>
+    </header>
+
+    <!-- Menu Section -->
+    <section>
+      <div class="flex justify-between items-end mb-12 border-b border-[#DEB887] pb-6">
+        <h2 class="text-4xl font-bold text-[#3e2723]">Our Seasonal Bake</h2>
+        <p class="text-rustic italic">Available for a limited time</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        @for (cookie of cookies(); track cookie._id) {
+          <div class="rustic-card group">
+            <div class="relative h-64 overflow-hidden">
+              <img [src]="cookie.image" [alt]="cookie.name" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              @if (cookie.isBestseller) {
+                <div class="absolute top-4 right-4 bg-[#8B4513] text-white px-3 py-1 text-xs uppercase tracking-widest font-bold">
+                  Bestseller
+                </div>
+              }
+            </div>
+            
+            <div class="p-8">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold text-[#3e2723]">{{cookie.name}}</h3>
+                <span class="text-xl font-serif text-[#8B4513]">${{cookie.price.toFixed(2)}}</span>
+              </div>
+              
+              <p class="text-gray-600 mb-8 leading-relaxed italic">
+                "{{cookie.description}}"
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-8">
+                @for (ing of cookie.ingredients; track ing) {
+                  <span class="text-[10px] uppercase tracking-tighter text-[#8B4513] border border-[#DEB887] px-2 py-1 rounded-sm">
+                    {{ing}}
+                  </span>
+                }
+              </div>
+
+              <button class="w-full btn-rustic">
+                Order Batch
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- Footer Quote -->
+    <footer class="mt-32 text-center border-t border-[#DEB887] pt-16">
+      <p class="text-3xl font-serif italic text-gray-500 max-w-3xl mx-auto">
+        "There is no problem so big that it cannot be solved with a warm cookie and a glass of cold milk."
+      </p>
+      <p class="mt-8 text-rustic uppercase tracking-[0.3em] text-sm">&mdash; The Rustic Batch Team &mdash;</p>
+    </footer>
+  </div>
+</div>
