@@ -121,7 +121,10 @@ const connectDB = async () => {
 connectDB();
 
 // --- Middlewares ---
-app.use(helmet());
+app.use(helmet({
+  frameguard: false,
+  contentSecurityPolicy: false
+}));
 
 app.use(cors({
   origin: true,
