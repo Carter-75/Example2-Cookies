@@ -1,82 +1,82 @@
-<div class="min-h-screen relative texture-overlay">
+<div class="home-container texture-overlay">
   <!-- Physics Layer -->
-  <div #scene class="absolute inset-0 z-0 pointer-events-none"></div>
+  <div #scene class="scene-container"></div>
 
-  <div class="relative z-10 max-w-6xl mx-auto px-6 py-20">
+  <div class="content-wrapper">
     <!-- Hero Section -->
-    <header class="text-center mb-24">
-      <span class="text-rustic italic text-lg mb-4 block">Est. 2024 &mdash; Handcrafted Daily</span>
-      <h1 class="text-7xl font-bold text-[#3e2723] mb-8">The Rustic Batch</h1>
-      <div class="w-24 h-1 bg-[#8B4513] mx-auto mb-8"></div>
-      <p class="max-w-2xl mx-auto text-xl text-gray-700 leading-relaxed font-light">
+    <header class="hero-header gs-reveal">
+      <span class="text-rustic hero-subtitle serif">Est. 2024 &mdash; Handcrafted Daily</span>
+      <h1 class="hero-title text-dark">The Rustic Batch</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-text">
         Small-batch cookies made with stone-ground flour, organic butter, and a whole lot of heart. 
         Delivered fresh from our hearth to your home.
       </p>
     </header>
 
     <!-- Our Heritage Section -->
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-32 items-center">
-      <div class="order-2 md:order-1">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1549590143-fd585df3c73e?auto=format&fit=crop&q=80&w=600" class="rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000">
-          <div class="absolute -bottom-8 -right-8 bg-[#8B4513] text-white p-8 rustic-card border-none hidden md:block">
-            <p class="font-serif italic text-2xl">"Old World methods, New World flavors."</p>
-          </div>
-        </div>
-      </div>
-      <div class="order-1 md:order-2">
-        <h2 class="text-4xl font-bold text-[#3e2723] mb-8">Our Heritage</h2>
-        <p class="text-gray-700 leading-relaxed mb-6 font-light">
+    <section class="heritage-section">
+      <div class="heritage-content-wrapper gs-reveal">
+        <h2 class="section-title text-dark">Our Heritage</h2>
+        <p class="heritage-text">
           The Rustic Batch began in a small cabin kitchen with a simple mission: to restore the dignity 
           of the humble cookie. We don't use industrial mixers or artificial extracts. Every batch is 
           folded by hand and baked in a wood-fired hearth.
         </p>
-        <p class="text-gray-700 leading-relaxed mb-8 font-light italic">
+        <p class="heritage-quote">
           "We believe the best ingredients are the ones you can recognize. Farm-fresh eggs, 
           locally milled flour, and seasonal berries from the mountain."
         </p>
-        <button class="btn-rustic">Read Our Story</button>
+        <button class="btn-rustic mag-btn">Read Our Story</button>
+      </div>
+      <div class="heritage-image-col">
+        <div class="heritage-image-wrapper gs-reveal">
+          <img src="https://images.unsplash.com/photo-1549590143-fd585df3c73e?auto=format&fit=crop&q=80&w=600" class="heritage-image">
+          <div class="rustic-card heritage-quote-card">
+            <p class="serif heritage-quote-text">"Old World methods, New World flavors."</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Menu Section -->
-    <section class="mb-32">
-      <div class="flex justify-between items-end mb-12 border-b border-[#DEB887] pb-6">
-        <h2 class="text-4xl font-bold text-[#3e2723]">Our Seasonal Bake</h2>
-        <p class="text-rustic italic">Available for a limited time</p>
+    <section class="menu-section">
+      <div class="menu-header gs-reveal">
+        <h2 class="section-title text-dark" style="margin-bottom: 0;">Our Seasonal Bake</h2>
+        <p class="text-rustic serif">Available for a limited time</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+      <div class="menu-grid">
         @for (cookie of cookies(); track cookie._id) {
-          <div class="rustic-card group">
-            <div class="relative h-64 overflow-hidden">
-              <img [src]="cookie.image" [alt]="cookie.name" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <div class="rustic-card gs-reveal">
+            <div class="cookie-img-wrapper">
+              <img [src]="cookie.image" [alt]="cookie.name" class="cookie-img">
               @if (cookie.isBestseller) {
-                <div class="absolute top-4 right-4 bg-[#8B4513] text-white px-3 py-1 text-xs uppercase tracking-widest font-bold">
+                <div class="bestseller-badge">
                   Bestseller
                 </div>
               }
             </div>
             
-            <div class="p-8">
-              <div class="flex justify-between items-start mb-4">
-                <h3 class="text-2xl font-bold text-[#3e2723]">{{cookie.name}}</h3>
-                <span class="text-xl font-serif text-[#8B4513]">${{cookie.price.toFixed(2)}}</span>
+            <div class="cookie-content">
+              <div class="cookie-header">
+                <h3 class="cookie-name text-dark">{{cookie.name}}</h3>
+                <span class="cookie-price serif">${{cookie.price.toFixed(2)}}</span>
               </div>
               
-              <p class="text-gray-600 mb-8 leading-relaxed italic">
+              <p class="cookie-desc">
                 "{{cookie.description}}"
               </p>
 
-              <div class="flex flex-wrap gap-2 mb-8">
+              <div class="cookie-tags">
                 @for (ing of cookie.ingredients; track ing) {
-                  <span class="text-[10px] uppercase tracking-tighter text-[#8B4513] border border-[#DEB887] px-2 py-1 rounded-sm">
+                  <span class="cookie-tag">
                     {{ing}}
                   </span>
                 }
               </div>
 
-              <button class="w-full btn-rustic">
+              <button class="btn-rustic w-full mag-btn">
                 Order Batch
               </button>
             </div>
@@ -86,32 +86,32 @@
     </section>
 
     <!-- Visit Section -->
-    <section class="bg-[#FFFDD0] border border-[#DEB887] p-12 rounded-lg text-center mb-32">
-      <h2 class="text-4xl font-bold text-[#3e2723] mb-4">Visit The Hearth</h2>
-      <p class="text-rustic italic mb-12 uppercase tracking-widest">Open for walk-ins & pre-order pickups</p>
+    <section class="visit-section gs-reveal">
+      <h2 class="section-title text-dark" style="margin-bottom: 1rem;">Visit The Hearth</h2>
+      <p class="text-rustic serif visit-subtitle">Open for walk-ins & pre-order pickups</p>
       
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-gray-700">
+      <div class="visit-grid">
         <div>
-          <h4 class="font-bold uppercase text-xs mb-2">Location</h4>
+          <h4 class="visit-label">Location</h4>
           <p>42 Baker Street<br>Hearthside, VT 05401</p>
         </div>
         <div>
-          <h4 class="font-bold uppercase text-xs mb-2">Hours</h4>
+          <h4 class="visit-label">Hours</h4>
           <p>Tue - Sat: 8am - 4pm<br>Sun: 9am - 2pm</p>
         </div>
         <div>
-          <h4 class="font-bold uppercase text-xs mb-2">Contact</h4>
+          <h4 class="visit-label">Contact</h4>
           <p>555-COOKIES<br>hello@rusticbatch.com</p>
         </div>
       </div>
     </section>
 
     <!-- Footer Quote -->
-    <footer class="mt-32 text-center border-t border-[#DEB887] pt-16">
-      <p class="text-3xl font-serif italic text-gray-500 max-w-3xl mx-auto">
+    <footer class="site-footer">
+      <p class="serif footer-quote gs-reveal">
         "There is no problem so big that it cannot be solved with a warm cookie and a glass of cold milk."
       </p>
-      <p class="mt-8 text-rustic uppercase tracking-[0.3em] text-sm">&mdash; The Rustic Batch Team &mdash;</p>
+      <p class="text-rustic footer-credits gs-reveal">&mdash; The Rustic Batch Team &mdash;</p>
     </footer>
   </div>
 </div>
